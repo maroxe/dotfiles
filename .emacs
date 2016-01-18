@@ -19,7 +19,7 @@
 ;---------------;
 
 ;; Git
-(include-plugin "magit")
+; (include-plugin "magit")
 (require 'magit)
 
 ;; Popup
@@ -93,7 +93,6 @@
 ;; Put auto 'custom' changes in a separate file (this is stuff like
 ;; custom-set-faces and custom-set-variables)
 (require 'theme-settings)
-(load-theme 'material-light t) ;; load material theme
 
 ;(load 
 ; (setq custom-file (expand-file-name "settings/custom.el" user-emacs-directory))
