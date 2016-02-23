@@ -1,4 +1,5 @@
- (setenv "PATH" (concat (getenv "PATH") ":/Library/TeX/texbin"))
+;; (setenv "PATH" (concat (getenv "PATH") ":/Library/TeX/texbin:/Users/maroxe/anaconda/bin"))
+(setenv "PATH" "/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/Users/maroxe/anaconda/bin:/Applications/MATLAB_R2015b.app/bin")
 
 ;; path where settings files are kept
 (add-to-list 'load-path "~/.emacs.d/settings")
@@ -59,7 +60,7 @@
 (ido-mode 1)
 
 ;; MuMaMo
-(require 'mumamo-settings)
+;(require 'mumamo-settings)
 
 ;; Markdown mode
 (require 'markdown-settings)
@@ -69,6 +70,9 @@
 
 ;; R mode 
 (require 'ess-settings)
+
+;; Lua Mode
+(require 'lua-settings)
 
 ;; LaTeX and Auctex
 (require 'latex-settings)
@@ -85,6 +89,13 @@
 ;; YAML mode
 (require 'yaml-settings)
 
+;; org mode
+(require 'org-settings)
+
+
+;; Outline Mode
+;(require 'outline-settings)
+
 ;; Nyancat mode!
 (nyan-mode 1)
 
@@ -99,6 +110,12 @@
 ; 'noerror)
 
 
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:inherit nil :stipple nil :background "#FAFAFA" :foreground "#212121" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 180 :width normal :foundry "nil" :family "Source Code Pro")))))
 
 
 
@@ -112,3 +129,69 @@
 
 
 
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(TeX-fold-env-spec-list
+   (quote
+    (("[Definition: [1]]||[definition]"
+      ("definition"))
+     ("[Question: {2}]||[question]"
+      ("question"))
+     ("[Problem: {2}]||[problem]"
+      ("problem"))
+     ("[Theorem: [1]]||[theorem]"
+      ("theorem"))
+     ("[Remark: [1]]||[remark]"
+      ("remark"))
+     ("[Lemma: [1]]||[lemma]"
+      ("lemma"))
+     ("[example]"
+      ("example"))
+     ("[proof]"
+      ("proof"))
+     ("[items]"
+      ("itemize"))
+     ("[enumerate]"
+      ("enumerate"))
+     ("[Class: [1]]||[Class]"
+      ("class")))))
+ '(TeX-fold-macro-spec-list
+   (quote
+    (("[footnote]"
+      ("footnote" "marginpar"))
+     ("[c]"
+      ("cite" "parencite"))
+     ("[l]"
+      ("label"))
+     ("[r]"
+      ("ref" "pageref" "eqref"))
+     ("[i]"
+      ("index" "glossary"))
+     ("[1]:||-"
+      ("item"))
+     ("..."
+      ("dots"))
+     ("(C)"
+      ("copyright"))
+     ("(R)"
+      ("textregistered"))
+     ("TM"
+      ("texttrademark"))
+     ("Question {1}"
+      ("Q"))
+     (1
+      ("part" "chapter" "section" "subsection" "subsubsection" "paragraph" "subparagraph" "part*" "chapter*" "section*" "subsection*" "subsubsection*" "paragraph*" "subparagraph*" "emph" "textit" "textsl" "textmd" "textrm" "textsf" "texttt" "textbf" "textsc" "textup" "ac"))
+     ("[comment]"
+      ("comment")))))
+ '(org-startup-truncated nil)
+ '(safe-local-variable-values
+   (quote
+    ((mode-require-final-newline . t)
+     (mode-require-final-newline)
+     (org-confirm-babel-evaluate)
+     (eval setq org-confirm-babel-evaluate nil)
+     (eval setq org-confirm-babel-evaluate t)))))

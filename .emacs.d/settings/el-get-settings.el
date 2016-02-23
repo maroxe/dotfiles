@@ -23,33 +23,46 @@
 
 ; packages to install
 (setq 
- my-packages '(auctex
-               autopair
+ my-packages '(
+                                        ; material-theme
+                                        ; ess
+                                        ; tangotango-theme
+               auctex
                auto-complete
+               autopair
                color-theme-solarized
+               cdlatex-mode
+               ecb
                ein
-               ess
+               elpy
                expand-region
                flycheck
-               jump-char
-               key-chord
-               magit
-               markdown-mode
-;              material-theme
-               matlab-mode
-               multiple-cursors
-               nxhtml
-               pydoc-info
-               scss-mode
-               popup
-               jedi
-               nyan-mode
+               folding
                helm
                helm-descbinds
+               jedi
                js2-mode
-               yasnippet
+               jump-char
+               key-chord
+               latex-preview-pane
+               lua-mode
+               magit
+               markdown-mode
+               matlab-mode
+               multiple-cursors
+               ;nxhtml
+               nyan-mode
+               org-mode
+               outshine
+               popup
+               popwin
+               pyenv
+               pydoc-info
+               scss-mode
                yaml-mode
+               yasnippet
                ))   
+
 (defvar myPackages
   '(
     material-theme
@@ -69,4 +82,11 @@
 ;;       myPackages)
 
 (provide 'el-get-settings)
+
+
+
+
+
+
+
 

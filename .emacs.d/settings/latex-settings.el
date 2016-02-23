@@ -37,31 +37,61 @@
 	    (tex-pdf-mode 1)
             (TeX-source-correlate-mode 1)))
 
-;; Fold
-;; (custom-set-variables
-;;  '(TeX-fold-macro-spec-list
-;;    '(("[f]"     ("footnote" "marginpar"))
-;;      ("[c]"     ("cite" "parencite"))
-;;      ("[l]"     ("label"))
-;;      ("[r]"     ("ref" "pageref" "eqref"))
-;;      ("[i]"     ("index" "glossary"))
-;;      ("[1]:||-" ("item"))
-;;      ("..."     ("dots"))
-;;      ("(C)"     ("copyright"))
-;;      ("(R)"     ("textregistered"))
-;;      ("TM"      ("texttrademark"))
-;;      ("Question {1}" ("Q"))
-;;      (1 ("part" "chapter" "section" "subsection" "subsubsection" "paragraph" "subparagraph" "part*" "chapter*" "section*" "subsection*" "subsubsection*" "paragraph*" "subparagraph*" "emph" "textit" "textsl" "textmd" "textrm" "textsf" "texttt" "textbf" "textsc" "textup" "ac")))))
+(add-hook 'LaTeX-mode-hook 
+          (lambda () 
+            (push '("KnitrLaTeX" "Rscript -e \"library(knitr)\; knit('%s')\" && latexmk -pdf %(ppp-file-name)" TeX-run-TeX nil t :help "Run knitr and latexmk on file") TeX-command-list)))
 
+;; Auto update open pdf file
+(add-hook 'doc-view-mode-hook 'auto-revert-mode)
+
+
+;; Fold
+(custom-set-variables
+ '(TeX-fold-macro-spec-list
+   '(("[footnote]"     ("footnote" "marginpar"))
+     ("[c]"     ("cite" "parencite"))
+     ("[l]"     ("label"))
+     ("[r]"     ("ref" "pageref" "eqref"))
+     ("[i]"     ("index" "glossary"))
+     ("[1]:||-" ("item"))
+     ("..."     ("dots"))
+     ("(C)"     ("copyright"))
+     ("(R)"     ("textregistered"))
+     ("TM"      ("texttrademark"))
+     ("Question {1}" ("Q"))
+     (1 ("part" "chapter" "section" "subsection" "subsubsection" "paragraph" "subparagraph" "part*" "chapter*" "section*" "subsection*" "subsubsection*" "paragraph*" "subparagraph*" "emph" "textit" "textsl" "textmd" "textrm" "textsf" "texttt" "textbf" "textsc" "textup" "ac"))
+     ("[comment]" ("comment")))
+   ))
 
 (custom-set-variables
-'( TeX-fold-env-spec-list
-  '(("[comment]" ("comment"))
-    ("\[[1]\]||[definition]" ("definition"))
-    ("\[[1]\]||[theorem]" ("theorem"))
+ '(TeX-fold-env-spec-list
+   '(
+     ("\[Definition: [1]\]||[definition]" ("definition"))
+     ("\[Question: {2}\]||[question]" ("question"))
+     ("\[Problem: {2}\]||[problem]" ("problem"))
+     ("\[Theorem: [1]\]||[theorem]" ("theorem"))
+     ("\[Remark: [1]\]||[remark]" ("remark"))
+     ("\[Lemma: [1]\]||[lemma]" ("lemma"))
+     ("[example]" ("example"))
+     ("[proof]" ("proof"))
+     ("[items]" ("itemize"))
+     ("[enumerate]" ("enumerate"))
+     ("\[Class: [1]\]||[Class]" ("class"))
 )))
-  
-;(add-to-list 'TeX-fold-env-spec-list '("[figure]" ("figure")))
 
+
+; Moved to outline-settings
+;(require 'outshine)
+;(defvar outline-minor-mode-prefix "\M-#")
+;(add-hook 'outline-minor-mode-hook 'outshine-hook-function)
+;(add-hook 'LaTeX-mode-hook 'outline-minor-mode)
+;(outline-minor-mode)
 
 (provide 'latex-settings)
+
+
+
+
+
+
+

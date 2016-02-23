@@ -11,6 +11,8 @@
 (key-chord-define-global "fg" 'jump-char-forward)
 (key-chord-define-global "df" 'jump-char-backward)
 (key-chord-define-global "hj"     'undo)
+(key-chord-define-global "tr"     'eshell)
+(setq key-chord-two-keys-delay 0.05)
 
 ; https://github.com/magnars/expand-region.el
 (require 'expand-region)
@@ -37,3 +39,6 @@
     (error (message "Invalid expression")
            (insert (current-kill 0)))))
 (global-set-key (kbd "C-x C-e") 'eval-and-replace)
+
+
+

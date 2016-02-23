@@ -95,19 +95,23 @@
   (add-hook 'elpy-mode-hook 'flycheck-mode))
 
 ; Set PYTHONPATH, because we don't load .bashrc
-(defun set-python-path-from-shell-PYTHONPATH ()
-  (let ((path-from-shell (shell-command-to-string "$SHELL -i -c 'echo $PYTHONPATH'")))
-    (setenv "PYTHONPATH" path-from-shell)))
+;(defun set-python-path-from-shell-PYTHONPATH ()
+;  (let ((path-from-shell (shell-command-to-string "$SHELL -i -c 'echo $PYTHONPATH'")))
+;    (setenv "PYTHONPATH" path-from-shell)))
 
-(if window-system (set-python-path-from-shell-PYTHONPATH))
+;(if window-system (set-python-path-from-shell-PYTHONPATH))
 
-(setq auto-mode-alist
-      (append 
-       (list '("\\.pyx" . python-mode)
-             '("SConstruct" . python-mode))
-       auto-mode-alist))
+;(setq auto-mode-alist
+;      (append 
+;       (list '("\\.pyx" . python-mode)
+;             '("SConstruct" . python-mode))
+;       auto-mode-keybindings))
 
-; keybindings
+; Set the path for anaconda envs
+(setenv "WORKON_HOME" "/Users/maroxe/anaconda/envs")
+(pyvenv-workon 'tensorflow)
+
+; alista
 (eval-after-load 'python
   '(define-key python-mode-map (kbd "C-c !") 'python-shell-switch-to-shell))
 (eval-after-load 'python
