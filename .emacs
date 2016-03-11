@@ -1,13 +1,31 @@
 ;; (setenv "PATH" (concat (getenv "PATH") ":/Library/TeX/texbin:/Users/maroxe/anaconda/bin"))
-(setenv "PATH" "/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/Users/maroxe/anaconda/bin:/Applications/MATLAB_R2015b.app/bin")
 
-;; path where settings files are kept
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
+(global-set-key (kbd "C-c C-c") 'eval-region)
+
+(setenv "PATH" "/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/Users/maroxe/anaconda/bin:/Applications/MATLAB_R2015b.app/bin:/usr/local/Cellar/emacs/HEAD/bin/")
+
+(setq exec-path (append exec-path '("/Applications/MATLAB_R2015b.app/bin")))
+
+;; Path where settings files are kept
 (add-to-list 'load-path "~/.emacs.d/settings")
 ;; path to where plugins are kept
 (setq plugin-path "~/.emacs.d/el-get/")
 
 ;; define various custom functions
 (require 'custom-functions)
+(require 'custom-settings)
 
 ;; configure general settings
 (require 'general-settings)
@@ -96,8 +114,6 @@
 ;; Outline Mode
 ;(require 'outline-settings)
 
-;; Nyancat mode!
-(nyan-mode 1)
 
 
 ;---------------------------------------------------------------------
@@ -110,12 +126,6 @@
 ; 'noerror)
 
 
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#FAFAFA" :foreground "#212121" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 180 :width normal :foundry "nil" :family "Source Code Pro")))))
 
 
 
@@ -187,11 +197,18 @@
       ("part" "chapter" "section" "subsection" "subsubsection" "paragraph" "subparagraph" "part*" "chapter*" "section*" "subsection*" "subsubsection*" "paragraph*" "subparagraph*" "emph" "textit" "textsl" "textmd" "textrm" "textsf" "texttt" "textbf" "textsc" "textup" "ac"))
      ("[comment]"
       ("comment")))))
- '(org-startup-truncated nil)
+ '(custom-safe-themes
+   (quote
+    ("3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" default)))
+ '(ecb-options-version "2.40")
  '(safe-local-variable-values
    (quote
-    ((mode-require-final-newline . t)
-     (mode-require-final-newline)
-     (org-confirm-babel-evaluate)
-     (eval setq org-confirm-babel-evaluate nil)
-     (eval setq org-confirm-babel-evaluate t)))))
+    ((TeX-command-extra-options . "-shell-escape")
+     (org-speed-commands-user)
+     (org-confirm-babel-evaluate)))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 180 :width normal :foundry "nil" :family "Source Code Pro")))))

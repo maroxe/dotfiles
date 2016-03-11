@@ -6,12 +6,14 @@
 (require 'key-chord)
 (key-chord-mode 1)
 
+(global-set-key [f1] 'other-frame)
 (global-set-key [f9] 'recompile)
 (global-set-key [f10] 'compile)
 (key-chord-define-global "fg" 'jump-char-forward)
 (key-chord-define-global "df" 'jump-char-backward)
 (key-chord-define-global "hj"     'undo)
 (key-chord-define-global "tr"     'eshell)
+(global-set-key (kbd "C-c C-c") 'eval-region)
 (setq key-chord-two-keys-delay 0.05)
 
 ; https://github.com/magnars/expand-region.el
@@ -39,6 +41,19 @@
     (error (message "Invalid expression")
            (insert (current-kill 0)))))
 (global-set-key (kbd "C-x C-e") 'eval-and-replace)
+
+
+;; gnu plot
+(local-set-key "\M-\C-g" 'org-plot/gnuplot)
+
+
+
+
+
+
+
+
+
 
 
 
