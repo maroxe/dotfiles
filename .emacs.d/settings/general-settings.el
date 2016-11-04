@@ -35,7 +35,6 @@
 
 ; number of characters until the fill column 
 (setq-default fill-column 70)
-
 ; each line of text gets one line on the screen (i.e., text will run
 ; off the left instead of wrapping around onto a new line)
 (setq-default truncate-lines nil)
@@ -78,9 +77,9 @@
 ; (global-set-key [f4] 'goto-line)
 
 ; require final newlines in files when they are saved
-(setq require-final-newline 1)
+(setq require-final-newline nil)
 ; add a new line when going to the next line
-(setq next-line-add-newlines t)
+(setq next-line-add-newlines nil)
 
 ; show the current line and column numbers in the stats bar as well
 (line-number-mode 1)

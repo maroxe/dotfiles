@@ -39,6 +39,7 @@ Return a list of installed packages or nil for every skipped package."
 ; packages to install
 (setq 
  my-elget-packages '(
+                     avy
                      auctex
                      auto-complete
                      autopair
@@ -64,7 +65,7 @@ Return a list of installed packages or nil for every skipped package."
                      markdown-mode
                      matlab-mode
                      multiple-cursors
-                                        ;nxhtml
+                     ;nxhtml
                      nyan-mode
                      org-mode
                      outshine
@@ -72,16 +73,19 @@ Return a list of installed packages or nil for every skipped package."
                      popwin
                      pyenv
                      pydoc-info
+                     python-django
+                     rainbow-mode
                      scss-mode
                      yaml-mode
                      yasnippet
+                     web-mode
                      ))   
 
 ; first enable shallow clone, so we don't need to clone the entire
 ; history of every project
 (setq el-get-git-shallow-clone t)
 
-; then intsall!
+; then install!
 (el-get 'sync my-elget-packages)
 
 

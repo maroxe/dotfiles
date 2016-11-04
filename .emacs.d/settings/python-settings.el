@@ -89,10 +89,10 @@
 ;; 	  (lambda ()
 ;; 	    (unless (eq buffer-file-name nil) (flymake-mode 1))))
 
-;; Use flycheck instead
-(when (require 'flycheck nil t)
-  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
-  (add-hook 'elpy-mode-hook 'flycheck-mode))
+;; Use flycheck when
+; (instead (require 'flycheck nil t)
+;   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+;   (add-hook 'elpy-mode-hook 'flycheck-mode))
 
 ; Set PYTHONPATH, because we don't load .bashrc
 ;(defun set-python-path-from-shell-PYTHONPATH ()
@@ -106,10 +106,11 @@
 ;       (list '("\\.pyx" . python-mode)
 ;             '("SConstruct" . python-mode))
 ;       auto-mode-keybindings))
+(add-to-list 'auto-mode-alist '("\\.kv\\'" . python-mode))
 
 ; Set the path for anaconda envs
 (setenv "WORKON_HOME" "/Users/maroxe/anaconda/envs")
-(pyvenv-workon 'tensorflow)
+(pyvenv-workon 'py27)
 
 ; alista
 (eval-after-load 'python

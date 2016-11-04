@@ -13,8 +13,9 @@
 (key-chord-define-global "df" 'jump-char-backward)
 (key-chord-define-global "hj"     'undo)
 (key-chord-define-global "tr"     'eshell)
+(key-chord-define-global "co"     'recompile)
 (global-set-key (kbd "C-c C-c") 'eval-region)
-(setq key-chord-two-keys-delay 0.05)
+(setq key-chord-two-keys-delay 0.005)
 
 ; https://github.com/magnars/expand-region.el
 (require 'expand-region)
@@ -46,6 +47,16 @@
 ;; gnu plot
 (local-set-key "\M-\C-g" 'org-plot/gnuplot)
 
+
+;; Avy
+(global-set-key (kbd "C-o") 'avy-goto-char-timer)
+
+;;
+; (global-set-key (kbd "C-'") 'revert-buffer)
+
+;; Org mode agenda
+
+(global-set-key (kbd "C-c a a") 'org-agenda-list)
 
 
 

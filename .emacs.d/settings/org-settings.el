@@ -42,18 +42,54 @@
           "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
 )
 
+;; Sync with drobox
+(setq org-mobile-directory "~/Dropbox-personal/Dropbox/mobileorg/")
+(setq org-directory "~/Documents/org/")
+(setq org-agenda-files '("~/Documents/org/tasks.org"))
+(setq org-mobile-inbox-for-pull "~/Documents/org/from-mobile.org")
+
+
+;; flyspell
+;; http://www.clarkdonley.com/blog/2014-10-26-org-mode-and-writing-papers-some-tips.html
+;; 1. hook flyspell into org-mode
+(add-hook 'org-mode-hook 'flyspell-mode)
+(add-hook 'org-mode-hook 'flyspell-buffer)
+
+;; 2. ignore message flags
+(setq flyspell-issue-message-flag nil)
+
+;; 3. ignore tex commands
+(add-hook 'org-mode-hook (lambda () (setq ispell-parser 'tex)))
+(defun flyspell-ignore-tex ()
+  (interactive)
+  (set (make-variable-buffer-local 'ispell-parser) 'tex))
+(add-hook 'org-mode-hook 'flyspell-ignore-tex)
+
+
+;; reftex for citations
+;; http://blog.modelworks.ch/?p=379
+
+(defun org-mode-reftex-setup ()
+  (load-library "reftex")
+  (and (buffer-file-name) (file-exists-p (buffer-file-name))
+       (progn
+     ;enable auto-revert-mode to update reftex when bibtex file changes on disk
+     (global-auto-revert-mode t)
+     (reftex-parse-all)
+     ;add a custom reftex cite format to insert links
+     (reftex-set-cite-format "[[papers:%l][%l]]: %t \n")
+     ;(reftex-set-cite-format 'natbib)
+   ))
+  (define-key org-mode-map (kbd "C-c (") 'reftex-citation)
+) 
+ 
+(add-hook 'org-mode-hook 'org-mode-reftex-setup) 
+ 
+(setq org-link-abbrev-alist '(("papers" . "/Users/maroxe/Dropbox/Time_varying_convex_programs/related_papers/%s.pdf"))) 
+(setq reftex-default-bibliography '("/Users/maroxe/Dropbox/Time_varying_convex_programs/related_papers/citations.bib")) 
+
+; auto-image-file-mode
+; auto-revert-mode
+
+
 (provide 'org-settings)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
